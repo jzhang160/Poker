@@ -37,12 +37,25 @@ class Deck:
                 slots -= 1
         self.deck = cards
     
-    def shuffles(self, x):
+    def shuffles(self, x: int):
+        """Conducts x shuffles on a deck.
+
+        Args:
+            x (int): The number of times you want to shuffle.
+
+        Returns:
+            Deck: A shuffled deck
+        """
         for n in range(x):
             self.shuffle()
         return self
 
     def shuffle(self):
+        """Conducts a 'perfect' shuffle on a deck, cutting the deck once down the center and alternating cards.
+
+        Returns:
+            Deck: A shuffled deck
+        """
         newDeck = []
         top =  self.deck[26:]
         bot = self.deck[0:26]
@@ -52,7 +65,15 @@ class Deck:
         self.deck = newDeck
         return self
     
-    def cut(self, x):
+    def cut(self, x: int):
+        """Cuts the deck at location x, swapping the part of the deck above and below the xth card.s
+
+        Args:
+            x (int): The number of cards at which a cut is conducted.
+
+        Returns:
+            Deck: A deck that has been cut.
+        """
         top = self.deck[x:]
         bot = self.deck[:x]
         self.deck = top + bot
